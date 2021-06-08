@@ -9,16 +9,5 @@ services:
     volumes:
       - .:/questionnare:rw
       
-  questionnare_make_migrations:
-    extends:
-      service: questionnare
-    command: python manage.py makemigrations
-
-  questionnare_migrate:
-    extends:
-      service: questionnare
-    depends_on:
-      - questionnare_make_migrations
-    command: python manage.py migrate
   
   
