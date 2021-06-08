@@ -1,11 +1,14 @@
 from django.db import models
 import datetime
 # Create your models here.
+
+
 class Questionnaire(models.Model):
     title = models.CharField("title", max_length=100)
     description = models.TextField("description", blank=True)
     start_date = models.DateField("start_date")
     stop_date = models.DateField("stop_date")
+
     def __str__(self):
         return f'title :{self.title}, questionnaire_id: {self.id}'
 
@@ -13,7 +16,6 @@ class Questionnaire(models.Model):
     def is_active(self):
 
         return self.start_date <= datetime.date.today() <= self.stop_date
-
 
     def is_completed (self, user_id):
         questions = Question.objects.filter(questionnaire_id=self)
