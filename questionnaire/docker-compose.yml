@@ -7,6 +7,6 @@ services:
     environment:
       MYENV: EXAMPLE
     volumes:
-      - .:/questionnare:rw
+      - .:/questionnare
       
    
