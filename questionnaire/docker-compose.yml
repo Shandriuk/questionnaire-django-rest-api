@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+
+  questionnare:
+    build: .
+    environment:
+      MYENV: EXAMPLE
+    volumes:
+      - .:/questionnare:rw
+      
+  questionnare_make_migrations:
+    extends:
+      service: questionnare
+    command: python manage.py makemigrations
+
+  questionnare_migrate:
+    extends:
+      service: questionnare
+    depends_on:
+      - questionnare_make_migrations
+    command: python manage.py migrate
+  
+  
