@@ -4,7 +4,7 @@ API to create and manage questionnaire on django rest
 Only auth, no registrations
 
 # 1. questionnaires/admin/ 
-### questionnaires` admin operations
+## questionnaires` admin operations
 
     - http://0.0.0.0:8080/questionnaires/admin/ 
         - GET - view list of all questionnaires
@@ -17,7 +17,7 @@ Only auth, no registrations
     - http://0.0.0.0:8080/questionnaires/admin/active
         - GET - view list of active questionnaires
 # 2. questions/admin/ 
-### questions` admin operations
+## questions` admin operations
 
     - http://0.0.0.0:8080/questions/
         - GET - view list of all questions
@@ -26,7 +26,7 @@ Only auth, no registrations
         - PUT - update questions["id"] data
         - DELETE - delete questions["id"]
 # 3. questionnaires/
-### questionnaires` user operations     
+## questionnaires` user operations     
 
     - http://0.0.0.0:8080/questionnaires/
         - GET - view list of active questionnaires
