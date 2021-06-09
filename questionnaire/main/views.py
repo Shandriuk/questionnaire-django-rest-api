@@ -31,6 +31,12 @@ class QuestionnairesAdminViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def retrieve(self, request, pk=None):
+        questionnaire = Questionnaire.objects.get(pk=pk)
+        questions = Question.objects.filter(questionnaire_id=questionnaire.id)
+        serializer = QuestionSerializer(questions, many=True)
+        return Response(serializer.data)
 
     def delete(self, request, pk=None):
         questionnaire = Questionnaire.objects.get(pk=pk)
@@ -43,12 +49,7 @@ class QuestionnairesAdminViewSet(viewsets.ModelViewSet):
         serializer = QuestionnaireSerializer(data_set, many=True)
         return Response(serializer.data)
 
-    @action(detail=True)
-    def questions(self, request, pk=None):
-        questionnaire = Questionnaire.objects.get(pk=pk)
-        questions = Question.objects.filter(questionnaire_id=questionnaire.id)
-        serializer = QuestionSerializer(questions, many=True)
-        return Response(serializer.data)
+
 
 class QuestionsViewSet(viewsets.ModelViewSet):
 
