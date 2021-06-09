@@ -56,6 +56,17 @@ class QuestionsViewSet(viewsets.ModelViewSet):
     serializer_class = QuestionSerializer
     permission_classes = [permissions.IsAdminUser]
 
+    def retrieve(self, request, pk=None):
+        questionnaire = get_object_or_404(Questionnaire.objects, pk=pk)
+
+        if not questionnaire.is_active:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        questions = Question.objects.filter(questionnaire_id=questionnaire.id)
+        serializer = QuestionSerializer(questions, many=True)
+
+        return Response(serializer.data)
+
     def update(self, request, pk=None):
         question = Question.objects.get(pk=pk)
 
