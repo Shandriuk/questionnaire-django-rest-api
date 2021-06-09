@@ -19,7 +19,8 @@ class Questionnaire(models.Model):
 
     def is_completed (self, user_id):
         questions = Question.objects.filter(questionnaire_id=self)
-
+        if len(questions)==0:
+            return False
         for elem in questions:
             answers = Answer.objects.filter(question=elem, user_id=user_id)
             if len(answers)==0:
