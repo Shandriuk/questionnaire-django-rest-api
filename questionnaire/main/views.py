@@ -46,7 +46,7 @@ class QuestionnairesAdminViewSet(viewsets.ModelViewSet):
     @action(detail=True)
     def questions(self, request, pk=None):
         questionnaire = Questionnaire.objects.get(pk=pk)
-        questions = Question.objects.filter(questionnaire_id=questionnaire)
+        questions = Question.objects.filter(questionnaire_id=questionnaire.id)
         serializer = QuestionSerializer(questions, many=True)
         return Response(serializer.data)
 
