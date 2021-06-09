@@ -5,6 +5,7 @@ Only auth, no registrations
 
 # 1. questionnaires/admin/ 
 ### questionnaires` admin operations
+
     - http://0.0.0.0:8080/questionnaires/admin/ 
         - GET - view list of all questionnaires
         - POST - post {"title":"{}", "description":"{}"*, "start_date":"YYYY-MM-DD","stop_date":"YYYY-MM-DD"}
@@ -17,6 +18,7 @@ Only auth, no registrations
         - GET - view list of active questionnaires
 # 2. questions/admin/ 
 ### questions` admin operations
+
     - http://0.0.0.0:8080/questions/
         - GET - view list of all questions
         - POST - post {"questionnaire_id":" ","question_text":" ","question_type":" "} 
@@ -24,7 +26,8 @@ Only auth, no registrations
         - PUT - update questions["id"] data
         - DELETE - delete questions["id"]
 # 3. questionnaires/
-### questionnaires` user operations         
+### questionnaires` user operations     
+
     - http://0.0.0.0:8080/questionnaires/
         - GET - view list of active questionnaires
     - http://0.0.0.0:8080/questionnaires/answers_all
