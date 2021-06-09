@@ -35,7 +35,7 @@ class Question(models.Model):
     )
 
     questionnaire_id = models.ForeignKey(Questionnaire, on_delete=models.CASCADE)
-    question_text = models.TextField("text_of_question", blank=True)
+    question_text = models.TextField("text_of_question")
     question_type = models.CharField("type_of_question", max_length=20, choices=QUESTION_TYPE_CHOICES, default='text')
 
     def __str__(self):
