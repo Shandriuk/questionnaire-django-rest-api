@@ -41,7 +41,7 @@ Only auth, no registrations
    - Questionnaire:
        - title = CharField( max_length=100) 
        - description = TextField(blank=True) 
-       - start_date = DateField() 
+       - start_date = DateField() - can`t edit after creation
        - stop_date = DateField() 
   - Question:
      - QUESTION_TYPE_CHOICES = (('text', 'text_only'), ('sc', 'single_choice'), ('mc', 'multiple_choices'),)
