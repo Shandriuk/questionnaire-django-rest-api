@@ -7,6 +7,32 @@ services:
     environment:
       MYENV: EXAMPLE
     volumes:
-      - .:/questionnare
-      
-   
+      - .:/questionnare:rw
+
+  questionnare_make_migrations:
+    extends:
+      service: questionnare
+    command: python manage.py makemigrations
+
+  questionnare_migrate:
+    extends:
+      service: questionnare
+    depends_on:
+      - questionnare_make_migrations
+    command: python manage.py migrate
+
+  questionnare_createsuperuser:
+    extends:
+      service: questionnare
+    depends_on:
+      - questionnare_make_migrations
+    command: python manage.py createsuperuser
+
+  questionnare_run:
+    extends:
+      service: questionnare
+    depends_on:
+      - questionnare_createsuperuser
+    command: python manage.py runserver
+    ports:
+      - 8000:8000
