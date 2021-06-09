@@ -4,41 +4,41 @@ API to create and manage questionnaire on django rest
 Only auth, no registrations
 
 # 1. questionnaires/admin/ 
-## questionnaires` admin operations
-
-    - http://0.0.0.0:8080/questionnaires/admin/ 
-        - GET - view list of all questionnaires
-        - POST - post {"title":"{}", "description":"{}"*, "start_date":"YYYY-MM-DD","stop_date":"YYYY-MM-DD"}
-        *don`t required
-    - http://0.0.0.0:8080/questionnaires/admin/id/
-        - GET - view list of all questions in questionnaires["id"]
-        - PUT - update questionnaires["id"] data
-        - DELETE - delete questionnaires["id"]
-    - http://0.0.0.0:8080/questionnaires/admin/active
-        - GET - view list of active questionnaires
+ Questionnaires` admin operations
+ 
+- http://0.0.0.0:8080/questionnaires/admin/ 
+    - GET - view list of all questionnaires
+    - POST - post {"title":"{}", "description":"{}"*, "start_date":"YYYY-MM-DD","stop_date":"YYYY-MM-DD"}
+    *don`t required
+- http://0.0.0.0:8080/questionnaires/admin/id/
+    - GET - view list of all questions in questionnaires["id"]
+    - PUT - update questionnaires["id"] data
+    - DELETE - delete questionnaires["id"]
+- http://0.0.0.0:8080/questionnaires/admin/active
+    - GET - view list of active questionnaires
 # 2. questions/admin/ 
-## questions` admin operations
+ Questions` admin operations
 
-    - http://0.0.0.0:8080/questions/
-        - GET - view list of all questions
-        - POST - post {"questionnaire_id":" ","question_text":" ","question_type":" "} 
-    - http://0.0.0.0:8080/questions/admin/id/    
-        - PUT - update questions["id"] data
-        - DELETE - delete questions["id"]
+- http://0.0.0.0:8080/questions/
+    - GET - view list of all questions
+    - POST - post {"questionnaire_id":" ","question_text":" ","question_type":" "} 
+- http://0.0.0.0:8080/questions/admin/id/    
+    - PUT - update questions["id"] data
+    - DELETE - delete questions["id"]
 # 3. questionnaires/
-## questionnaires` user operations     
+ Questionnaires` user operations     
 
-    - http://0.0.0.0:8080/questionnaires/
-        - GET - view list of active questionnaires
-    - http://0.0.0.0:8080/questionnaires/answers_all
-        - GET - view list of all user`s answers (only for authorised users)
-    - http://0.0.0.0:8080/questionnaires/completed (only for authorised users)
-        - GET - view list of completed questionnaires    
-    - http://0.0.0.0:8080/questionnaires/id/
-        - GET - view list of all questions in questionnaires["id"]
-        - POST - answer {"question":"id","answer_text":"answer"}
-    http://0.0.0.0:8080/questionnaires/id/answers
-        - GET - view list of questionnaires["id"] user`s answers (only for authorised users)
+- http://0.0.0.0:8080/questionnaires/
+    - GET - view list of active questionnaires
+- http://0.0.0.0:8080/questionnaires/answers_all
+    - GET - view list of all user`s answers (only for authorised users)
+- http://0.0.0.0:8080/questionnaires/completed (only for authorised users)
+    - GET - view list of completed questionnaires    
+- http://0.0.0.0:8080/questionnaires/id/
+    - GET - view list of all questions in questionnaires["id"]
+    - POST - answer {"question":"id","answer_text":"answer"}
+- http://0.0.0.0:8080/questionnaires/id/answers
+    - GET - view list of questionnaires["id"] user`s answers (only for authorised users)
  
  # Models:
    - Questionnaire:
