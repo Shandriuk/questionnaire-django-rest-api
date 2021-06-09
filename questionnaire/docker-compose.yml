@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
 
-  questionnare:
+  questionnare_env:
     build: .
     environment:
       MYENV: EXAMPLE
@@ -11,28 +11,26 @@ services:
 
   questionnare_make_migrations:
     extends:
-      service: questionnare
+      service: questionnare_env
     command: python manage.py makemigrations
 
   questionnare_migrate:
     extends:
-      service: questionnare
+      service: questionnare_env
     depends_on:
       - questionnare_make_migrations
     command: python manage.py migrate
 
-  questionnare_createsuperuser:
+  createsuperuser:
     extends:
-      service: questionnare
+      service: questionnare_env
     depends_on:
-      - questionnare_make_migrations
+      - questionnare_migrate
     command: python manage.py createsuperuser
 
-  questionnare_run:
+  runserver:
     extends:
-      service: questionnare
-    depends_on:
-      - questionnare_createsuperuser
+      service: questionnare_env
     command: python manage.py runserver
     ports:
       - 8000:8000
