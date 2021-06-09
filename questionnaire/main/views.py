@@ -107,7 +107,10 @@ class QuestionnairesViewSet(viewsets.ModelViewSet):
     def post(self, request, pk=None):
 
         try:
+
             questionnaire = Questionnaire.objects.get(pk=pk)
+            if not questionnaire.is_active:
+                return Response(status=status.HTTP_204_NO_CONTENT)
             question = Question.objects.get(questionnaire_id=questionnaire, id=request.data['question'])
         except:
             return Response(status=status.HTTP_204_NO_CONTENT)
